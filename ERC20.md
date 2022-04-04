@@ -123,15 +123,71 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 #### 函数概览
 
+```solidity
+constructor(name_, symbol_)
+name()
+symbol()
+decimals()
+totalSupply()
+balanceOf(account)
+transfer(to, amount)
+allowance(owner, spender)
+approve(spender, amount)
+transferFrom(from, to, amount)
+increaseAllowance(spender, addedValue)
+decreaseAllowance(spender, subtractedValue)
+_transfer(from, to, amount)
+_mint(account, amount)
+_burn(account, amount)
+_approve(owner, spender, amount)
+_spendAllowance(owner, spender, amount)
+_beforeTokenTransfer(from, to, amount)
+_afterTokenTransfer(from, to, amount)
+```
 
+**事件（同 IERC20）**
 
+```solidity
+Transfer(from, to, value)
+Approval(owner, spender, value)
+```
 
+#### 逐一分析
 
+- `constructor(string name, string symbol)` ：设定代币的名称和符号。`decimals` 默认是 18 ，要修改成不同的值你应该重载它。这两个值是不变的，只在构造时赋值一次。
+- `name()` ：返回代币的名称。
+- `symbol()` ：返回代币的符号，通常是名称的缩写。
+- `decimals()` ：返回小数点后位数，通常是 18 ，模仿 Ether 和 wei 。要更改就重写它。
 
+`totalSupply()、balanceOf(address account)、transfer(address to, uint256 amount)、 allowance(address owner, address spender)、approve(address spender, uint256 amount)、transferFrom(address from, address to, uint256 amount)` 都参考 IERC20 。
 
+- `increaseAllowance(address spender, uint256 addedValue)` ：以原子的方式增加 `spender` 额度。返回布尔值告知是否执行成功，触发 `Approval` 事件。
 
+- `_transfer(address from, address to, uint256 amount)` ：转账。这个内部函数相当于 `transfer` ，可以用于例如实施自动代币费用，削减机制等。触发 `Transfer` 事件。
 
+- `_mint(address account, uint256 amount)` ：铸造 `amount` 数量的代币给 `account` 地址，增加总发行量。触发 `Transfer` 事件，其中参数 `from` 是零地址。
 
+- `_burn(address account, uint256 amount)` ：从 `account` 地址中烧毁 `amount` 数量的代币，减少总发行量。触发 `Transfer` 事件，其中参数 `to` 是零地址。
 
+- `_approve(address owner, uint256 spender, uint256 amount)` ：设定允许 `spender` 花费 `owner` 的代币数量。这个内部函数相当于 `approve` ，可以用于例如为某些子系统设置自动限额等。
 
+- `spendAllowance(address owner, address spender, uint256 amount)` ：花费 `amount` 数量的 `owner` 授权 `spender` 的代币。在无限 allowance 的情况下不更新 allowance 金额。如果没有足够的余量，则恢复。可能触发 `Approval` 事件。
 
+- `_beforeTokenTransfer(address from, address to, uint256 amount)` ：在任何代币转账前的 Hook 。它包括铸币和烧毁。调用条件：
+  - 当 `from` 和 `to` 都不是零地址时，`from` 手里 `amount` 数量的代币将发送给 `to` 。
+  - 当 `from` 是零地址时，将给 `to` 铸造 `amount` 数量的代币。
+  - 当 `to` 是零地址时，`from` 手里 `amount` 数量的代币将被烧毁。
+  - `from` 和 `to` 不能同时为零地址。
+- `_afterTokenTransfer(address from, address to, uint256 amount)` ：在任何代币转账后的 Hook 。它包括铸币和烧毁。调用条件：
+  - 当 `from` 和 `to` 都不是零地址时，`from` 手里 `amount` 数量的代币将发送给 `to` 。
+  - 当 `from` 是零地址时，将给 `to` 铸造 `amount` 数量的代币。
+  - 当 `to` 是零地址时，`from` 手里 `amount` 数量的代币将被烧毁。
+  - `from` 和 `to` 不能同时为零地址。
+
+#### 小结
+
+ERC20 代码中的 `_transfer`、`_mint`、`_burn`、`_approve`、`_spendAllowance`、`_beforeTokenTransfer`、`_afterTokenTransfer` 都是 `internal` 函数（其余为 `public` ），也就是说它们只能被派生合约调用。
+
+## 总结
+
+ERC20 其实就是一种最常见的代币标准，它明确了代币的经典功能并规范了开发者所编写的 token 的代码，从而方便各种应用适配。
