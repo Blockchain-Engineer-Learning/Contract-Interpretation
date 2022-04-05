@@ -188,6 +188,63 @@ Approval(owner, spender, value)
 
 ERC20 代码中的 `_transfer`、`_mint`、`_burn`、`_approve`、`_spendAllowance`、`_beforeTokenTransfer`、`_afterTokenTransfer` 都是 `internal` 函数（其余为 `public` ），也就是说它们只能被派生合约调用。
 
+## 从零开始，自己动手
+
+### 1.编写IERC20
+
+```solidity
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+interface IERC20 {
+    /// @dev 总发行量
+    function totoalSupply() external view returns (uint256);
+    /// @dev 查看地址余额
+    function balanceOf(address account) external view returns (uint256);
+    /// @dev 单地址转账
+    function transfer(address account, uint256 amount) external returns (bool);
+    /// @dev 查看被授权人代表所有者花费的代币余额
+    function allowance(address owner, address spender) external view returns (uint256);
+    /// @dev 授权别人花费你拥有的代币
+    function approve(address spender, uint256 amount) external returns (bool);
+    /// @dev 双地址转账
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) external returns (bool);
+
+    /// @dev 发生代币转移时触发
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    /// @dev 授权时触发
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+```
+
+### 2.加上Metadata
+
+```solidity
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+import "IERC20.sol";
+
+interface IERC20Metadata is IERC20 {
+    /// @dev 代币名称
+    function name() external view returns (string memory);
+    /// @dev 代币符号
+    function symbol() external view returns (string memory);
+    /// @dev 小数点后位数
+    function decimals() external view returns (uint8);
+}
+```
+
+### 3.编写ERC20
+
+
+
 ## 总结
 
 ERC20 其实就是一种最常见的代币标准，它明确了代币的经典功能并规范了开发者所编写的 token 的代码，从而方便各种应用适配。
