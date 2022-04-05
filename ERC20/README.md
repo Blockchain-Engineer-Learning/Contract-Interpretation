@@ -4,7 +4,7 @@
 
 ## 什么是ERC20
 
-ERC20（Ethereum Request for Comments 20）一种代币标准。[EIP-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) 中提出
+ERC20（Ethereum Request for Comments 20）一种代币标准。[EIP-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) 中提出。
 
 ERC20 代币合约跟踪同质化（可替代）代币：任何一个代币都完全等同于任何其他代币；没有任何代币具有与之相关的特殊权利或行为。这使得 ERC20 代币可用于交换货币、投票权、质押等媒介。
 
