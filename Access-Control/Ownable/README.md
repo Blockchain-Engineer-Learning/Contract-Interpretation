@@ -26,7 +26,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 我们先来看下源码，然后逐行分析。
 
-Ownable.sol
+[Ownable.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/Access-Control/Ownable/Ownable.sol)
 
 ```solidity
 // SPDX-License-Identifier: MIT
