@@ -14,5 +14,5 @@
 ## OpenZepplin
 
 - [ ] Access Control
-  - [ ] Ownable
+  - [x] Ownable
   - [ ] Access Control
