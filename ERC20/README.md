@@ -196,7 +196,7 @@ ERC20 代码中的 `_transfer`、`_mint`、`_burn`、`_approve`、`_spendAllowan
 
 ### 1.编写IERC20
 
-[IERC20.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/ERC20/contracts/IERC20.sol)
+[IERC20.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/ERC20/IERC20.sol)
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -230,7 +230,7 @@ interface IERC20 {
 
 ### 2.加上Metadata
 
-[IERC20Metadata.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/ERC20/contracts/IERC20Metadata.sol)
+[IERC20Metadata.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/ERC20/IERC20Metadata.sol)
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -251,7 +251,7 @@ interface IERC20Metadata is IERC20 {
 
 ### 3.编写ERC20
 
-[ERC20.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/ERC20/contracts/ERC20.sol)
+[ERC20.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/ERC20/IERC20.sol)
 
 ```solidity
 // SPDX-License-Identifier: MIT
