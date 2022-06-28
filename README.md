@@ -10,9 +10,16 @@
 ## Projects
 
 - [ ] Uniswap
+- [ ] Compound
+- [ ] MakerDAO
 
 ## OpenZepplin
+
+- [ ] SafeMath
 
 - [ ] Access Control
   - [x] Ownable
   - [ ] Access Control
+- [ ] Cryptography
+  - [ ] Checking Signatures On-Chain
+  - [ ] Verifying Merkle Proofs
