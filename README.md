@@ -15,7 +15,7 @@
 
 ## OpenZepplin
 
-- [ ] SafeMath
+- [x] SafeMath
 
 - [ ] Access Control
   - [x] Ownable
