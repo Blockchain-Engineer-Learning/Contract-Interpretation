@@ -41,7 +41,7 @@ import "@openzeppelin/contracts/utils/math/SignedSafeMath.sol";
 
 ## 分析
 
-源码 [SafeMath.sol](https://docs.openzeppelin.com/contracts/4.x/api/utils#SafeMath)
+源码 [SafeMath.sol](https://github.com/Blockchain-Engineer-Learning/Contract-Interpretation/blob/main/SafeMath/SafeMath.sol)
 
 ```solidity
 // SPDX-License-Identifier: MIT
