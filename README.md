@@ -10,6 +10,10 @@
 ## Projects
 
 - [ ] Uniswap
+  - [ ] v1
+  - [ ] v2
+  - [ ] v3
+
 - [ ] Compound
 - [ ] MakerDAO
 
