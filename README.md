@@ -10,7 +10,7 @@
 ## Protocol
 
 - [ ] Uniswap
-  - [ ] v1
+  - [x] v1
   - [ ] v2
   - [ ] v3
 
