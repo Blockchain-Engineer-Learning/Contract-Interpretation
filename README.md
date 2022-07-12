@@ -7,7 +7,7 @@
 - [x] ERC20
 - [ ] ERC721
 
-## Projects
+## Protocol
 
 - [ ] Uniswap
   - [ ] v1
