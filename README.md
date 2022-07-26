@@ -19,6 +19,8 @@
 
 ## OpenZepplin
 
+### Contracts
+
 - [x] SafeMath
 
 - [ ] Access Control
@@ -27,3 +29,9 @@
 - [ ] Cryptography
   - [ ] Checking Signatures On-Chain
   - [ ] Verifying Merkle Proofs
+
+### Upgrades Contracts
+
+- [ ] ERC20Upgradeable
+- [ ] ERC721Upgradeable
+
